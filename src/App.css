@@ -1,0 +1,247 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.weather-app {
+  width: 100%;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.comic-style {
+  font-family: 'Comic Sans MS', cursive;
+  background-color: #fff5e6;
+  border: 3px solid #000;
+  box-shadow: 5px 5px 0px #000;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.comic-title {
+  font-size: 2.5em;
+  text-transform: uppercase;
+  color: #ff4500;
+  text-shadow: 2px 2px #000;
+  margin-right: 20px;
+  flex: 1;
+}
+
+.search-form {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.search-form input {
+  width: 200px;
+  margin-right: 10px;
+}
+
+.search-form button {
+  padding: 5px 10px;
+}
+
+.comic-input, .comic-button {
+  font-family: 'Comic Sans MS', cursive;
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0px #000;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #000;
+}
+
+.comic-button {
+  padding: 8px 15px;
+  color: #000;
+  font-weight: bold;
+}
+
+.comic-button:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px #000;
+}
+
+.comic-panel {
+  border: 2px solid #000;
+  box-shadow: 3px 3px 0px #000;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.comic-panel::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1.5" fill="%23000000" fill-opacity="0.1"/></svg>');
+  background-size: 20px 20px;
+  pointer-events: none;
+}
+
+.comic-text {
+  font-weight: bold;
+  color: #000;
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.weather-item {
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.weather-item:hover {
+  transform: translateY(-5px);
+}
+
+.comic-text.large {
+  font-size: 1.5em;
+}
+
+.comic-icon {
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.3));
+}
+
+.comic-icon.large {
+  width: 64px;
+  height: 64px;
+}
+
+.forecast-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+
+.forecast-item {
+  flex: 0 0 auto;
+  width: 150px;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.day-details {
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+}
+
+.hourly-forecast-container {
+  margin: 20px 0;
+}
+
+.hourly-forecast {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 10px 0;
+  scrollbar-width: thin;
+  scrollbar-color: #888 transparent;
+}
+
+.hourly-forecast::-webkit-scrollbar {
+  height: 8px;
+}
+
+.hourly-forecast::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+.hourly-forecast::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+.hourly-item {
+  flex: 0 0 auto;
+  width: 100px;
+  text-align: center;
+  margin-right: 10px;
+}
+
+.current-temp {
+  text-align: center;
+  font-size: 2em;
+  margin: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .weather-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .weather-grid {
+    grid-template-columns: 1fr;
+  }
+ 
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .comic-title {
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  .search-form {
+    justify-content: center;
+  }
+
+  .forecast-item {
+    width: 120px;
+  }
+}
+
+.weather-app {
+  position: relative;
+  z-index: 1;
+}
+
+.animated-background {
+  z-index: 0;
+}
+
+.header,
+.weather-info,
+.forecast-container,
+.day-details {
+  position: relative;
+  z-index: 2;
+}
